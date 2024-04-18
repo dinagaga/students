@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package admin;
+package user;
 
+import admin.*;
 import config.Session;
 import javax.swing.JOptionPane;
 import mark2d.loginForm;
@@ -13,12 +14,12 @@ import mark2d.loginForm;
  *
  * @author PC11
  */
-public class adminDashboard extends javax.swing.JFrame {
+public class userDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form adminDashboard
      */
-    public adminDashboard() {
+    public userDashboard() {
         initComponents();
     }
 
@@ -43,7 +44,6 @@ public class adminDashboard extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         acc_name = new javax.swing.JLabel();
-        acc_lname = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,12 +78,12 @@ public class adminDashboard extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        jPanel5.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel5.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setBackground(new java.awt.Color(0, 255, 153));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("ADMIN DASHBOARD");
+        jLabel1.setText("USER DASHBOARD");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setText("LOGOUT");
@@ -105,7 +105,7 @@ public class adminDashboard extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -124,9 +124,9 @@ public class adminDashboard extends javax.swing.JFrame {
         jPanel1.setLayout(null);
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
-        jPanel3.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel3.setBackground(new java.awt.Color(255, 153, 153));
 
-        jPanel6.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel6.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC11\\Downloads\\icons8-admin-96.png")); // NOI18N
 
@@ -147,10 +147,7 @@ public class adminDashboard extends javax.swing.JFrame {
         );
 
         acc_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        acc_name.setText("ADMIN");
-
-        acc_lname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        acc_lname.setText("ADMIN");
+        acc_name.setText("USER");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -160,10 +157,8 @@ public class adminDashboard extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(acc_name)
-                    .addComponent(acc_lname))
+                .addGap(30, 30, 30)
+                .addComponent(acc_name)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -173,9 +168,7 @@ public class adminDashboard extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(acc_name)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(acc_lname)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.LINE_END);
@@ -202,18 +195,17 @@ public class adminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-     Session sess = Session.getinstance();
-              
+       Session sess = Session.getinstance();     
+       
        if(sess.getUid()==0){ 
          JOptionPane.showMessageDialog(null,"NO account, Login First!");
          loginForm  lf = new loginForm();
          lf.setVisible(true);
          this.dispose();
        }else{
-       acc_name.setText(""+sess.getFname());
-       acc_lname.setText(""+sess.getLname());
+       acc_name.setText(""+sess.getFname()); 
        
-       }
+      } 
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -233,26 +225,26 @@ public class adminDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(adminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(adminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(adminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(adminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new adminDashboard().setVisible(true);
+                new userDashboard().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel acc_lname;
     private javax.swing.JLabel acc_name;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
